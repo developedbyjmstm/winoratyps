@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Direct JSON Viewer</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0A2625 0%, #103F3E 100%);
+            color: #fff;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .output-section {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #9A7701;
+            border-bottom: 2px solid #9A7701;
+            padding-bottom: 8px;
+        }
+
+        .results {
+            margin-bottom: 15px;
+            color: #B5C3C3;
+            font-style: italic;
+        }
+
+        .json-output {
+            white-space: pre-wrap;
+            font-family: monospace;
+            font-size: 13px;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 15px;
+            border-radius: 5px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="output-section">
+            <h2>DEVELOPEDBYJMS™ SYSTEM CONTROL</h2>
+
+            <div class="results">
+                
+            </div>
+
+            <div class="json-output" id="jsonOutput"></div>
+        </div>
+    </div>
+
+    <script>
+        // JSON direto (hardcoded)
+        const data = [
+            {
+            
+            "appversion": "660.600",
+                "playstorelink": "https://play.google.com/store/apps/details?id=com.developedbyjms.winora",
+            
+             
+                // NOTIFICATION 
+                "shownotificationdialog": "false",
+                "shownotificationtopbar": "false",
+                "notificationtitle": "NOVA VERSÃO DA APP",
+                "notificationmessage": "OLÁ USUÁRIO GOSTARIMOS DE INFORMALO QUE JA SE ENCONTRA DISPONÍVEL UMA NOVA VERSÃO DA APP NA PLAYSTORE.",
+                
+                
+            
+                "interstitialads1": "true",
+                "interstitialads2": "true",
+                "rewardedads1": "true",
+                "openappads": "true",
+                "bannerads": "true",
+                
+                "interstitialads1hide": "xx, yy",
+                "interstitialads2hide": "xx, yy",
+                "rewardedads1hide": "xx, yy",
+                "openappadshide": "xx, yy",
+                "banneradshide": "ad, ae, af, ag, ai, al, am, ao, aq, ar, as, at, au, aw, ax, az, ba, bb, bd, be, bf, bg, bh, bi, bj, bl, bm, bn, bo, bq, br, bs, bt, bv, bw, by, bz, ca, cc, cd, cf, cg, ch, ci, ck, cl, cm, cn, co, cr, cu, cv, cw, cx, cy, cz, de, dj, dk, dm, do, dz, ec, ee, eg, eh, er, es, et, fi, fj, fk, fm, fo, fr, ga, gb, gd, ge, gf, gg, gh, gi, gl, gm, gn, gp, gq, gr, gs, gt, gu, gw, gy, hk, hm, hn, hr, ht, hu, id, ie, il, im, in, io, iq, ir, is, it, je, jm, jo, jp, ke, kg, kh, ki, km, kn, kp, kr, kw, ky, kz, la, lb, lc, li, lk, lr, ls, lt, lu, lv, ly, ma, mc, md, me, mf, mg, mh, mk, ml, mm, mn, mo, mp, mq, mr, ms, mt, mu, mv, mw, mx, my, mz, na, nc, ne, nf, ng, ni, nl, no, np, nr, nu, nz, om, pa, pe, pf, pg, ph, pk, pl, pm, pn, pr, ps, pt, pw, py, qa, re, ro, rs, ru, rw, sa, sb, sc, sd, se, sg, sh, si, sj, sk, sl, sm, sn, so, sr, ss, st, sv, sx, sy, sz, tc, td, tf, tg, th, tj, tk, tl, tm, tn, to, tr, tt, tv, tw, tz, ua, ug, um, us, uy, uz, va, vc, ve, vg, vi, vn, vu,wf, ws,ye, yt,za, zm, zw",
+                
+                
+                // ads frequency 
+                 "interstitialads1frequency": "260000",
+                 "interstitialads2frequency": "260000",
+                "rewardedads1frequency": "60000",
+                "openappadsfrequency": "3600000",
+                "callinterstitialads1afterxyclicks": "2",
+                 "callinterstitialads2afterxyclicks": "4",
+              
+              "toolbartitle": "WINORATYPS",  
+              "oninitloaddata": "8",  //default 3, it starts from 3
+   //From 1 to 5
+  "toolbaricon": "1",
+  
+  "toolbartextsize": "20",
+  
+  // From 1 to 5
+  "optionmenu1icon": "1",
+  
+  // From 1 to 5
+  "optionmenu2icon": "1",
+                
+                "webview1": "true",
+                "webview2": "true",
+                "webview3": "true",
+                "webview4": "true",
+                "webview5": "true",
+                
+                "listview1": "false",
+                "fab": "false",
+               
+                
+  // DIALOG 1 AND 2 CONTROL
+  "dialog1": "true",
+  "dialog2": "true",
+  
+  // DIALOG 1 VISIBILITY 
+  "dialog1button1": "true",
+  "dialog1button2": "true",
+  "dialog1button3": "true",
+  "dialog1button4": "true",
+  "dialog1button5": "true",
+  "dialog1button6": "true",
+  "dialog1button7": "true",
+  "dialog1button8": "true",
+  "dialog1button9": "true",
+  "dialog1button10": "true",
+  "dialog1button11": "true",
+  "dialog1button12": "true",
+  // Dialog 1 TITLE
+  "dialog1title": "VIP TICKETS • WINORATYPS™",
+  "dialog1button1title": "VIP SBPGP TOP TODAY",
+  "dialog1button2title": "VIP SBPGP PICKS TODAY",
+  "dialog1button3title": "VIP SBPGP TOP YESTERDAY",
+  "dialog1button4title": "VIP SBPGP PICKS YESTERDAY",
+  "dialog1button5title": "VIP MIA.K TODAY",
+  "dialog1button6title": "VIP MIA.K YESTERDAY",
+  "dialog1button7title": "VIP OVER•FLOW DC TODAY",
+  "dialog1button8title": "VIP OVER•FLOW DC YESTERDAY",
+  "dialog1button9title": "VIP P•POWER OVER 1.5 TODAY",
+  "dialog1button10title": "VIP P•POWER OVER 1.5 YESTERDAY",
+  "dialog1button11title": "VIP BTTS/GG TODAY",
+  "dialog1button12title": "VIP BTTS/GG YESTERDAY",
+  
+  // DIALOG 2 VISIBILITY 
+  "dialog2button1": "true",
+  "dialog2button2": "true",
+  "dialog2button3": "true",
+  "dialog2button4": "true",
+  "dialog2button5": "true",
+  "dialog2button6": "true",
+  "dialog2button7": "true",
+  "dialog2button8": "true",
+  "dialog2button9": "false",
+  "dialog2button10": "false",
+  // Dialog 2 TITLE
+  "dialog2title": "DAILY TICKETS • WINORATYPS™",
+  "dialog2button1title": "TICKET [OVER 1.5] TODAY",
+  "dialog2button2title": "TICKET [OVER 1.5] YESTERDAY",
+  "dialog2button3title": "D.STYLË OVER 1.5 TODAY",
+  "dialog2button4title": "D.STYLË OVER 1.5 YESTERDAY",
+  "dialog2button5title": "TICKET [DOUBLE CHANCE] TODAY",
+  "dialog2button6title": "TICKET [DOUBLE CHANCE] YESTERDAY",
+  "dialog2button7title": "TICKET [MIXED MARKETS] TODAY",
+  "dialog2button8title": "TICKET [MIXED MARKETS] YESTERDAY",
+  "dialog2button9title": "TITLE9",
+  "dialog2button10title": "TITLE10",
+  
+               
+  
+  
+                "optionmenu1": "true",
+                "optionmenu2": "true",
+                //MATCHOUTLOOCK
+                "optionmenu3": "false",
+                "optionmenu4": "false",
+                //PRIMA
+                "optionmenu5": "true",
+                "optionmenu6": "true",
+                "optionmenu7": "true",
+                "optionmenu8": "true",
+                "optionmenu9": "true",
+                "optionmenu10": "true",
+                //PASSION
+                "optionmenu11": "false",
+                "optionmenu12": "false",
+                "optionmenu13": "false",
+                "optionmenu14": "false",
+                "optionmenu15": "false",
+                "optionmenu16": "false",
+                "optionmenu17": "false",
+                "optionmenu18": "false",
+                "optionmenu19": "false",
+                "optionmenu20": "false",
+                "optionmenu21": "false",
+                "optionmenu22": "false",
+                //TFAME
+                "optionmenu23": "false",
+                "optionmenu24": "false",
+                "optionmenu25": "false",
+                "optionmenu26": "false",
+                //SUPERBETPRED
+                "optionmenu27": "false",
+                "optionmenu28": "false",
+                //LEGITPRED
+                "optionmenu29": "false",
+                "optionmenu30": "false",
+                "optionmenu31": "false",
+                "optionmenu32": "false",
+                "optionmenu33": "false",
+                "optionmenu34": "false",
+                //TFAME
+                "optionmenu35": "false",
+                "optionmenu36": "false",
+                //R2bet
+                "optionmenu37": "false",
+                "optionmenu38": "false",
+                "optionmenu39": "false",
+                "optionmenu40": "false",
+                "optionmenu41": "false",
+                "optionmenu42": "false",
+                "optionmenu43": "false",
+                "optionmenu44": "false",
+                "optionmenu45": "false",
+                //BTWID
+                "optionmenu46": "false",
+                
+                
+  "optionmenu1title": "VIP TICKETS",
+  "optionmenu2title": "DAILY TICKETS",
+  //MATCHOUTLOOCK 
+  "optionmenu3title": "TOP PICKS TODAY", // matchoutloock
+  "optionmenu4title": "TOP PICKS YESTERDAY", // matchoutloock
+  //PRIMA
+  "optionmenu5title": "OVER/UNDER 1.5", //prima
+  "optionmenu6title": "OVER/UNDER 2.5", //prima
+  "optionmenu7title": "OVER/UNDER 3.5", //prima
+  "optionmenu8title": "MIXED MARKETS", // prima
+  "optionmenu9title": "BOTH2SCORE", //prima
+  "optionmenu10title": "DOUBLE CHANCE", // prima 
+  //PASSION
+  "optionmenu11title": "TOP PICKS", //passion
+  "optionmenu12title": "TOP BANKER",//passion
+  "optionmenu13title": "HOME WIN",//passion
+  "optionmenu14title": "AWAY WIN",//passion
+  "optionmenu15title": "DOUBLE CHANCE",//passion
+  "optionmenu16title": "OVER 1.5",//passion
+  "optionmenu17title": "OVER 2.5",//passion
+  "optionmenu18title": "UNDER 3.5",//passion
+  "optionmenu19title": "WIN EITHER HALF",//passion
+  "optionmenu20title": "DRAW NO BET",//passion
+  "optionmenu21title": "BTTS/GG",//passion
+  "optionmenu22title": "HT OVER 0.5",//passion
+  //TFAME
+  "optionmenu23title": "TFAME OVER 1.5 TODAY",//tfame
+  "optionmenu24title": "TFAME OVER 1.5 YESTERDAY",//tfame
+  "optionmenu25title": "TFAME DOUBLE CHANCE TODAY",//tfame
+  "optionmenu26title": "TFAME DOUBLE CHANCE YESTERDAY",//tfame
+  //SUPERBETPRED 
+  "optionmenu27title": "SBP PICKS TODAY",//superbetpred
+  "optionmenu28title": "SBP PICKS YESTERDAY",//superbetpred
+  //LEGITPRED 
+  "optionmenu29title": "LP TOP TODAY",//legitpred
+  "optionmenu30title": "LP TOP YESTERDAY",//legitpred
+  "optionmenu31title": "LP OVER 1.5 TODAY",//legitpred
+  "optionmenu32title": "LP OVER 1.5 YESTERDAY",//legitpred
+  "optionmenu33title": "LP DOUBLE CHANCE TODAY",//legitpred
+  "optionmenu34title": "LP DOUBLE CHANCE YESTERDAY",//legitpred
+  //TFAME
+  "optionmenu35title": "TFAME BTTS/GG TODAY",//tfame
+  "optionmenu36title": "TFAME BTTS/GG YESTERDAY",//tfame
+  //R2BET
+  "optionmenu37title": "PĮCKS DÆÍLY",//r2bet
+  "optionmenu38title": "DØUBLË CHÄNCĖ",//r2bet
+  "optionmenu39title": "BÆNKĘR",//r2bet
+  "optionmenu40title": "ØVĖR 1.5",//r2bet
+  "optionmenu41title": "ØVĖR 2.5",//r2bet
+  "optionmenu42title": "ÜNDĘR 3.5",//r2bet
+  "optionmenu43title": "ẞTTS (Bøth Tęam tö Scörë)",//r2bet
+  "optionmenu44title": "HT 0.5",//r2bet
+  "optionmenu45title": "WĮN EITHËR HÄLF",//r2bet
+  //BTWID
+  "optionmenu46title": "BĘTWÏẞ PÏCKẞ"//bTwid
+  
+  
+  
+  
+
+                
+            }
+        ];
+
+        // Mostrar JSON formatado
+        document.getElementById("jsonOutput").textContent =
+            JSON.stringify(data, null, 2);
+    </script>
+</body>
+</html>
